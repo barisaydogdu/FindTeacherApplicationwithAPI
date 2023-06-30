@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FindTeacherApp.Models.Student>
+
+@{
+    ViewData["Title"] = "GetAllStudents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetAllStudents</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialRequests)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialRequests)
+            </td>
+            <td>
+                @Html.ActionLink("UpdateStudent", "UpdateStudent", new {  id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("DeleteStudent", "DeleteStudent", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
